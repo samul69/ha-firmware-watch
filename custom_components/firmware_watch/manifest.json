@@ -1,0 +1,12 @@
+{
+  "domain": "firmware_watch",
+  "name": "Firmware Watch",
+  "codeowners": ["@samul69"],
+  "config_flow": true,
+  "documentation": "https://github.com/samul69/ha-firmware-watch",
+  "integration_type": "device",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/samul69/ha-firmware-watch/issues",
+  "requirements": [],
+  "version": "0.2.0"
+}

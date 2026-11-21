@@ -1,0 +1,11 @@
+set_installed_version:
+  target:
+    entity:
+      integration: firmware_watch
+      domain: update
+  fields:
+    version:
+      required: false
+      example: "7.2.2-72806 Update 3"
+      selector:
+        text:

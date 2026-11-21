@@ -1,0 +1,383 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Firmware source",
+        "description": "Choose where the newest firmware version should be checked. The integration never logs in to your device.",
+        "data": {
+          "provider": "Firmware source"
+        }
+      },
+      "synology": {
+        "title": "Synology device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "region": "Website region",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Exactly as on synology.com, e.g. DS923+, DS920+, RT6600ax",
+          "region": "Language code of synology.com, default en-global",
+          "installed_version": "As shown in DSM, e.g. 7.2.2-72806 Update 3"
+        }
+      },
+      "avm": {
+        "title": "FRITZ! device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "region": "Website region",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Folder name from download.avm.de, e.g. fritzbox-7590, fritzbox-7530-ax, fritzrepeater-3000-ax",
+          "region": "other = international firmware, deutschland = German",
+          "installed_version": "e.g. 8.20 (FRITZ!OS 8.20)"
+        }
+      },
+      "tplink": {
+        "title": "TP-Link device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "hardware_version": "Hardware version",
+          "region": "Website region",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Model slug from the tp-link.com URL, e.g. archer-ax55, deco-x50",
+          "hardware_version": "e.g. 4 for V4 (sticker on the device)",
+          "region": "Region in the URL, default en (global), e.g. uk, de, pl",
+          "installed_version": "e.g. 1.2.0 Build 20260721 - compared by build date"
+        }
+      },
+      "omada": {
+        "title": "Omada device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "region": "Website region",
+          "hardware_version": "Hardware version",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Model slug from the support.omadanetworks.com URL, e.g. er605, sg2008p, eap653",
+          "region": "Region in the URL: en (Europe), us, pl ...",
+          "hardware_version": "Optional, e.g. 1.0 or 1.30 - only firmware for this hardware",
+          "installed_version": "e.g. 1.2.11 Build 20260723"
+        }
+      },
+      "unifi": {
+        "title": "UniFi device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "platform": "Platform",
+          "product": "Product",
+          "channel": "Release channel",
+          "model": "Model",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "platform": "Platform code, e.g. U7PG2, US8P60 (devices), UDR, UCGMAX, UDMPRO (consoles), UNVR",
+          "product": "unifi-firmware (APs, switches), unifi-dream (consoles), unifi-nvr, uvc (cameras)",
+          "model": "Optional, only for display, e.g. U6 Lite",
+          "installed_version": "e.g. 6.7.31"
+        }
+      },
+      "asus": {
+        "title": "ASUS router",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Model as in the router UI, e.g. RT-AC68U, RT-AX88U, GT-AX11000",
+          "installed_version": "e.g. 3.0.0.4.386_48260"
+        }
+      },
+      "mikrotik": {
+        "title": "MikroTik device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "channel": "Release channel",
+          "major": "Major version",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Optional, only for display, e.g. hAP ax3",
+          "major": "RouterOS major version, default 7",
+          "installed_version": "e.g. 7.19.4"
+        }
+      },
+      "openwrt": {
+        "title": "OpenWrt router",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "channel": "Release channel",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Optional, only for display",
+          "channel": "stable = newest release, oldstable = previous series",
+          "installed_version": "e.g. 24.10.2"
+        }
+      },
+      "reolink": {
+        "title": "Reolink device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "hardware_version": "Hardware version",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Product name as in the Reolink download center, e.g. RLC-810A, E1 Zoom, RLN8-410 - or product ID",
+          "hardware_version": "Recommended - Hardware version from the app / web UI, e.g. IPC_523128M8MP",
+          "installed_version": "e.g. v3.0.0.4867_2505072124"
+        }
+      },
+      "dell": {
+        "title": "Dell computer",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "As in Dell support, e.g. Latitude 5440, XPS 13 9340, OptiPlex 7010 - or the 4-digit system ID",
+          "installed_version": "BIOS version from BIOS setup / msinfo32, e.g. 1.27.0"
+        }
+      },
+      "lenovo": {
+        "title": "Lenovo computer",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "machine_type": "Machine type",
+          "os": "Operating system",
+          "model": "Model",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "machine_type": "First 4 characters of the MTM on the sticker, e.g. 21HD (from 21HDCTO1WW)",
+          "os": "Catalog to use",
+          "model": "Optional, only for display, e.g. ThinkPad T14 Gen 4",
+          "installed_version": "e.g. N3QET52W (1.52) or 1.52"
+        }
+      },
+      "apple": {
+        "title": "Apple device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "Device name, e.g. iPad Air 5 (WiFi), iPhone 15 Pro, MacBook Air (M2, 2022) - or identifier like iPad13,16",
+          "installed_version": "e.g. 18.6.2 (newest signed release is compared)"
+        }
+      },
+      "samsung": {
+        "title": "Samsung Galaxy device",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "model": "Model",
+          "csc": "CSC (region code)",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "model": "e.g. SM-X710 (Settings - About - Model number)",
+          "csc": "Region code, e.g. EUX (Europe tablets), XEO (Poland phones)",
+          "installed_version": "Build number, e.g. X710XXU5CYJ3"
+        }
+      },
+      "github": {
+        "title": "GitHub project",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "repository": "Repository (owner/name)",
+          "model": "Model",
+          "include_prereleases": "Include pre-releases",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "repository": "e.g. openwrt/openwrt",
+          "model": "Optional, only for display",
+          "installed_version": "Tag without the leading v"
+        }
+      },
+      "web_regex": {
+        "title": "Web page",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "url": "URL",
+          "regex": "Regular expression",
+          "pick": "Which match to use",
+          "manufacturer": "Manufacturer",
+          "model": "Model",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "url": "Page with the download list / release notes",
+          "regex": "Python regex; the first capture group is the version, e.g. Version (\\d+\\.\\d+\\.\\d+)",
+          "pick": "highest = highest version found, first = first match on the page"
+        }
+      },
+      "json": {
+        "title": "JSON endpoint",
+        "data": {
+          "name": "Device name",
+          "installed_version": "Installed firmware version",
+          "url": "URL",
+          "json_path": "Path in JSON",
+          "manufacturer": "Manufacturer",
+          "model": "Model",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24",
+          "url": "URL returning JSON",
+          "json_path": "Dotted path, e.g. data.0.version or firmware.latest"
+        }
+      }
+    },
+    "error": {
+      "cannot_fetch": "Could not read the newest version: {error}"
+    },
+    "abort": {
+      "already_configured": "This device is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Device settings",
+        "description": "After a manual upgrade change the installed version here (or use the action Set installed version).",
+        "data": {
+          "installed_version": "Installed firmware version",
+          "channel": "Release channel",
+          "csc": "CSC (region code)",
+          "hardware_version": "Hardware version",
+          "include_prereleases": "Include pre-releases",
+          "json_path": "Path in JSON",
+          "machine_type": "Machine type",
+          "major": "Major version",
+          "manufacturer": "Manufacturer",
+          "model": "Model",
+          "os": "Operating system",
+          "pick": "Which match to use",
+          "platform": "Platform",
+          "product": "Product",
+          "regex": "Regular expression",
+          "region": "Website region",
+          "repository": "Repository (owner/name)",
+          "url": "URL",
+          "scan_interval_hours": "Check interval"
+        },
+        "data_description": {
+          "scan_interval_hours": "How often to check the vendor (hours), default 24"
+        }
+      }
+    },
+    "error": {
+      "cannot_fetch": "Could not read the newest version: {error}"
+    }
+  },
+  "selector": {
+    "provider": {
+      "options": {
+        "synology": "Synology (DSM/SRM/BSM)",
+        "avm": "AVM FRITZ! (Box, Repeater, Powerline)",
+        "tplink": "TP-Link (Archer, Deco, ...)",
+        "omada": "TP-Link Omada (routers, switches, APs)",
+        "unifi": "Ubiquiti UniFi (APs, switches, consoles, cameras)",
+        "asus": "ASUS routers (older AC/AX models)",
+        "mikrotik": "MikroTik RouterOS",
+        "openwrt": "OpenWrt",
+        "reolink": "Reolink (cameras, doorbells, NVR)",
+        "dell": "Dell BIOS (laptops, desktops)",
+        "lenovo": "Lenovo BIOS (ThinkPad, ThinkCentre, ThinkStation)",
+        "apple": "Apple (iPad, iPhone, Apple silicon Mac)",
+        "samsung": "Samsung Galaxy (phones, tablets)",
+        "github": "GitHub releases",
+        "web_regex": "Any web page + regular expression",
+        "json": "Any JSON URL + path"
+      }
+    },
+    "pick": {
+      "options": {
+        "highest": "Highest version",
+        "first": "First match"
+      }
+    },
+    "channel": {
+      "options": {
+        "stable": "Stable",
+        "long-term": "Long-term",
+        "testing": "Testing",
+        "development": "Development",
+        "release": "Release",
+        "release-candidate": "Release candidate",
+        "beta": "Beta",
+        "oldstable": "Old stable"
+      }
+    },
+    "os": {
+      "options": {
+        "win11": "Windows 11",
+        "win10": "Windows 10"
+      }
+    },
+    "region": {
+      "options": {
+        "other": "International",
+        "deutschland": "Germany"
+      }
+    }
+  },
+  "services": {
+    "set_installed_version": {
+      "name": "Set installed version",
+      "description": "Store the firmware version now running on the device (after a manual upgrade). Without a version the newest known version is used.",
+      "fields": {
+        "version": {
+          "name": "Version",
+          "description": "Installed version; empty = newest known version"
+        }
+      }
+    }
+  }
+}
