@@ -1,7 +1,14 @@
 {
   "domain": "firmware_watch",
   "name": "Firmware Watch",
-  "codeowners": ["@samul69"],
+  "categories": [
+    "computers_network.monitoring",
+    "computers_network.routers_network",
+    "computers_network.nas_servers"
+  ],
+  "codeowners": [
+    "@samul69"
+  ],
   "config_flow": true,
   "documentation": "https://github.com/samul69/ha-firmware-watch",
   "integration_type": "device",
