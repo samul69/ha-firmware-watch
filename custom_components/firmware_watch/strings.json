@@ -184,10 +184,10 @@
         },
         "data_description": {
           "scan_interval_hours": "How often to check the vendor (hours), default 24",
-          "machine_type": "First 4 characters of the MTM on the sticker, e.g. 21HD (from 21HDCTO1WW)",
+          "machine_type": "First 4 characters of the MTM on the sticker or in BIOS, e.g. 21HD (from 21HDCTO1WW) or 82JW",
           "os": "Catalog to use",
           "model": "Optional, only for display, e.g. ThinkPad T14 Gen 4",
-          "installed_version": "e.g. N3QET52W (1.52) or 1.52"
+          "installed_version": "BIOS version, e.g. N3QET52W (1.52) or PQCN32WW"
         }
       },
       "apple": {
@@ -329,7 +329,7 @@
         "openwrt": "OpenWrt",
         "reolink": "Reolink (cameras, doorbells, NVR)",
         "dell": "Dell BIOS (laptops, desktops)",
-        "lenovo": "Lenovo BIOS (ThinkPad, ThinkCentre, ThinkStation)",
+        "lenovo": "Lenovo BIOS (ThinkPad, IdeaPad, Legion, Yoga, ThinkCentre)",
         "apple": "Apple (iPad, iPhone, Apple silicon Mac)",
         "samsung": "Samsung Galaxy (phones, tablets)",
         "github": "GitHub releases",

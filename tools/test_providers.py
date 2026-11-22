@@ -24,7 +24,8 @@ CASES = [
     ("mikrotik", {"channel": "stable", "installed_version": "7.19.4"}),
     ("dell", {"model": "Latitude 5440", "installed_version": "1.27.0"}),
     ("dell", {"model": "OptiPlex 7010", "installed_version": "1.0.0"}),
-    ("lenovo", {"machine_type": "21HD", "os": "Win11", "installed_version": "N3QET50W (1.50)"}),
+    ("lenovo", {"machine_type": "21HD", "os": "win11", "installed_version": "N3QET50W (1.50)"}),
+    ("lenovo", {"machine_type": "82JW", "os": "win11", "installed_version": "HHCN32WW"}),
     ("samsung", {"model": "SM-X710", "csc": "EUX", "installed_version": "X710XXU5CYA1"}),
     ("github", {"repository": "esphome/esphome", "installed_version": "2025.1.0"}),
     ("web_regex", {"url": "https://upgrade.mikrotik.com/routeros/NEWESTa7.stable", "regex": r"(\d+\.\d+(?:\.\d+)?)", "pick": "first", "installed_version": "7.25.1"}),
@@ -69,6 +70,10 @@ async def main():
     assert not tpl.is_newer("1.11.2 Build 26102114", "1.11.2 Build 26102114")
     assert tpl.is_newer("1.11.2 Build 26102114", "1.11.0 Build 25060110")
     assert tpl.is_newer("1.2.0 Build 20260721", "251030")
+    assert len_.is_newer("HHCN37WW", "HHCN32WW")
+    assert not len_.is_newer("PQCN32WW", "PQCN32WW")
+    assert len_.is_newer("1.53", "N3QET52W")
+    assert not len_.is_newer("1.52", "N3QET52W")
     uni, avm, asus, ow = P["unifi"], P["avm"], P["asus"], P["openwrt"]
     assert not uni.is_newer("6.0.17+7bcad58", "6.0.17")
     assert uni.is_newer("6.8.2+15592", "6.7.31")

@@ -600,9 +600,14 @@ class LenovoBiosProvider(Provider):
         return conf.get("model") or conf.get("machine_type")
 
     def version_key(self, version: str) -> tuple[int, ...]:
-        # "N3QET52W (1.52)" or "1.52" -> (1, 52)
-        if m := re.search(r"(\d+)\.(\d+)", version or ""):
-            return (int(m.group(1)), int(m.group(2)))
+        # Lenovo BIOS IDs end in a two-digit build number:
+        #   Think:    "N3QET52W (1.52)", "N3QET52W", "1.52"   -> (52,)
+        #   consumer: "PQCN32WW", "HHCN37WW"                 -> (32,), (37,)
+        v = (version or "").upper()
+        if m := re.search(r"\d+\.(\d+)", v):
+            return (int(m.group(1)),)
+        if m := re.search(r"(\d{2})WW?\b", v):
+            return (int(m.group(1)),)
         return numeric_key(version)
 
     async def async_latest(self, session, conf):

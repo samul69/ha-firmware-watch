@@ -26,7 +26,7 @@ There is no "Install" button, because the integration does not install anything.
 | Reolink | `RLC-810A`, `E1 Zoom` + HW version | Reolink Download Center API |
 | **Computers & tablets** | | |
 | Dell BIOS | `Latitude 5440` or system ID `0C00` | Dell Command Update catalog (downloads.dell.com) |
-| Lenovo BIOS | machine type `21HD` | Lenovo System Update catalog (ThinkPad / ThinkCentre / ThinkStation) |
+| Lenovo BIOS | machine type `21HD`, `82JW` | Lenovo update catalog (ThinkPad, IdeaPad, Legion, Yoga, ThinkCentre) |
 | Apple | `iPad Air 5 (WiFi)`, `iPhone15,2` | ipsw.me (newest signed release) |
 | Samsung Galaxy | `SM-X710`, CSC `EUX` | Samsung FOTA server ⚠️ not verified |
 | **Generic** | | |
@@ -40,8 +40,9 @@ is wrong, you get an error explaining why.
 ### Notes
 - **Dell**: some names are reused across generations (e.g. "OptiPlex 7010" from 2012 and 2023).
   In that case enter the 4-character system ID (PowerShell: `(Get-CimInstance Win32_ComputerSystem).SystemSKUNumber`).
-- **Lenovo**: only the Think\* lines, because IdeaPad/Yoga have no public catalog. Lenovo Android
-  tablets don't have one either. If you find a page that lists versions, use the "web page + regex" provider.
+- **Lenovo**: works for Think and consumer lines (IdeaPad, Legion, Yoga) that Lenovo publishes in its update
+  catalog. Lenovo Android tablets have no public source. If you find a page that lists versions, use the
+  "web page + regex" provider.
 - **Samsung**: the public `version.xml` endpoint returned HTTP 403 during development. It may work from
   your network; adding the device will tell you.
 - **TP-Link**: if a hardware revision isn't sold in a region, the site redirects to a different revision.

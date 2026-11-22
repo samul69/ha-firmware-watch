@@ -6,7 +6,11 @@ from typing import Any
 
 import voluptuous as vol
 
-from homeassistant.components.update import UpdateDeviceClass, UpdateEntity
+from homeassistant.components.update import (
+    UpdateDeviceClass,
+    UpdateEntity,
+    UpdateEntityFeature,
+)
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_validation as cv, device_registry as dr
 from homeassistant.helpers import entity_platform
@@ -46,7 +50,9 @@ class FirmwareUpdateEntity(CoordinatorEntity[FirmwareCoordinator], UpdateEntity)
     _attr_has_entity_name = True
     _attr_name = None
     _attr_device_class = UpdateDeviceClass.FIRMWARE
-    _attr_supported_features = 0  # informational only - we never install
+    # Informational only - we never install. Must be the flag type, not int:
+    # UpdateEntity checks `UpdateEntityFeature.INSTALL in supported_features`.
+    _attr_supported_features = UpdateEntityFeature(0)
 
     def __init__(self, coordinator: FirmwareCoordinator) -> None:
         super().__init__(coordinator)
