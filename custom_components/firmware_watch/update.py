@@ -79,7 +79,14 @@ class FirmwareUpdateEntity(CoordinatorEntity[FirmwareCoordinator], UpdateEntity)
     def latest_version(self) -> str | None:
         if self.coordinator.data is None:
             return None
-        return self.coordinator.data.version
+        source = self.coordinator.data.version
+        installed = self.installed_version
+        # Vendor feeds can lag behind what is already installed (e.g. a BIOS
+        # flashed from the support site before the update catalog caught up).
+        # Never report something older than the installed version as "latest".
+        if installed and self.coordinator.provider.is_newer(installed, source):
+            return installed
+        return source
 
     @property
     def release_url(self) -> str | None:
@@ -97,6 +104,7 @@ class FirmwareUpdateEntity(CoordinatorEntity[FirmwareCoordinator], UpdateEntity)
         data = self.coordinator.data
         return {
             "provider": self.coordinator.conf.get(CONF_PROVIDER),
+            "source_latest_version": data.version if data else None,
             "published": data.published if data else None,
             "last_check": self.coordinator.last_check,
         }

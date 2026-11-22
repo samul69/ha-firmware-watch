@@ -34,6 +34,10 @@ There is no "Install" button, because the integration does not install anything.
 | Web page + regex | URL + regex with a capture group `( )` | any web page |
 | JSON | URL + path `data.0.version` | any JSON API |
 
+If a vendor feed only knows an older version than the one you have installed, the entity reports your
+installed version as the latest (state stays "up to date"); the feed's own value is kept in the
+`source_latest_version` attribute.
+
 When you add a device, the integration fetches the newest version right away. If the configuration
 is wrong, you get an error explaining why.
 
@@ -41,7 +45,8 @@ is wrong, you get an error explaining why.
 - **Dell**: some names are reused across generations (e.g. "OptiPlex 7010" from 2012 and 2023).
   In that case enter the 4-character system ID (PowerShell: `(Get-CimInstance Win32_ComputerSystem).SystemSKUNumber`).
 - **Lenovo**: works for Think and consumer lines (IdeaPad, Legion, Yoga) that Lenovo publishes in its update
-  catalog. Lenovo Android tablets have no public source. If you find a page that lists versions, use the
+  catalog. For consumer models the catalog often lags behind the support site, so the integration also
+  checks whether the next BIOS builds are already published. Lenovo Android tablets have no public source. If you find a page that lists versions, use the
   "web page + regex" provider.
 - **Samsung**: the public `version.xml` endpoint returned HTTP 403 during development. It may work from
   your network; adding the device will tell you.

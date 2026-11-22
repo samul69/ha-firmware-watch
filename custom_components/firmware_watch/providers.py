@@ -638,7 +638,35 @@ class LenovoBiosProvider(Provider):
         if not best:
             raise ProviderError(f"Could not read BIOS version from {url}")
         _, ver, date, title, readme_url = best
+        if newer := await self._probe_newer(session, ver, locations[0]):
+            ver, date, title, readme_url = newer
         return Release(version=ver, release_url=readme_url, summary=title, published=date)
+
+    async def _probe_newer(self, session, ver: str, loc: str):
+        """Consumer BIOS (e.g. PQCN31WW) is published before the catalog is updated.
+
+        For these the file name is the BIOS version, so check whether readme files
+        of the next few builds already exist next to the catalogued package.
+        """
+        m = re.fullmatch(r"([A-Z0-9]{4})(\d{2})WW", ver.upper())
+        if not m:
+            return None  # Think packages use unrelated file names
+        prefix, build = m.group(1), int(m.group(2))
+        base = loc.strip().rsplit("/", 1)[0]
+        found = None
+        for nxt in range(build + 1, min(build + 6, 100)):
+            cand = f"{prefix}{nxt:02d}WW"
+            try:
+                text = await _get_text(session, f"{base}/{cand.lower()}.txt")
+            except ProviderError:
+                continue  # builds are sometimes skipped
+            if not re.search(rf"Version\s*:?\s*{cand}\b", text, re.I):
+                continue
+            date = re.search(r"(?:Updated|Release) Date\s*:\s*([\d-]{8,10})", text, re.I)
+            title = text.strip().splitlines()[0].strip() if text.strip() else None
+            found = (cand, date.group(1) if date else None, _short(title),
+                     f"{base}/{cand.lower()}.txt")
+        return found
 
 
 # --------------------------------------------------------------------------
